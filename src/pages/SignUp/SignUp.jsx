@@ -1,27 +1,53 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { AuthContext } from '../Provider/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 
 
 const SignUp = () => {
 
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const [passwordVisible, setPasswordVisible] = useState(false);
+
+    const { createUser } = useContext(AuthContext)
 
     const handlePasswordToggle = () => {
         setPasswordVisible(!passwordVisible);
     };
 
-
     const handleSignUp = (data) => {
         // TODO: Signup Implement In Firebase
-        console.log(data);
+        const { name, image, email, password } = data;
+
+        console.log(name, image, email, password);
+
+        createUser(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user)
+                toast.success(' Account Created Successfully🤟 !')
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
+
+        /* Form Reset */
+        reset()
+
+
+
+
+
+
     }
+
 
     return (
         <div>
