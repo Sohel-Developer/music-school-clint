@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 
@@ -8,6 +10,12 @@ const SignUp = () => {
 
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+    const [passwordVisible, setPasswordVisible] = useState(false);
+
+    const handlePasswordToggle = () => {
+        setPasswordVisible(!passwordVisible);
+    };
 
 
     const handleSignUp = (data) => {
@@ -17,8 +25,8 @@ const SignUp = () => {
 
     return (
         <div>
-            <div className="hero  bg-base-200">
-                <div className="hero-content h-screen w-full  ">
+            <div className="hero">
+                <div className="hero-content  w-full  ">
 
                     <div className="card mt-32 md:w-1/3 pb-5 shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(handleSignUp)} className="p-5">
@@ -47,7 +55,12 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input {...register("password")} type="password" placeholder="password" className="input input-bordered" />
+                                <div className='relative'>
+                                    <input  {...register("password")} type={passwordVisible ? 'text' : 'password'} placeholder="password" className="input input-bordered w-full" />
+                                    <button className='absolute right-4 top-3  ' onClick={handlePasswordToggle}>
+                                        {passwordVisible ? <FaEye className='text-2xl'></FaEye> : <FaEyeSlash className='text-2xl'></FaEyeSlash>}
+                                    </button>
+                                </div>
                                 <label className="label">
                                     {/* TODO: Forget Account Implement */}
                                     <Link to='/' className="label-text-alt link link-hover">Forgot password?</Link>
