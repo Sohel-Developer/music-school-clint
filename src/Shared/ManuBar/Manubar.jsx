@@ -17,7 +17,7 @@ const Manubar = () => {
 
 
     return (
-        <div className='bg-gray-200  fixed w-full'>
+        <div className='bg-gray-200 z-10  fixed w-full'>
             <div className="navbar max-w-7xl mx-auto ">
                 <div className="navbar-start">
                     <div className="dropdown">

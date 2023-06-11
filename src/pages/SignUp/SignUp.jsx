@@ -2,12 +2,16 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+
+
+const SignUp = () => {
+
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    const handleLogin = (data) => {
-        // TODO: Login Implement In Firebase
+
+    const handleSignUp = (data) => {
+        // TODO: Signup Implement In Firebase
         // e.preventDefault()
         console.log(data);
 
@@ -16,22 +20,33 @@ const Login = () => {
         console.log("Clicked");
     }
 
-
     return (
         <div>
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content w-full  ">
+            <div className="hero  bg-base-200">
+                <div className="hero-content h-screen w-full  ">
 
-                    <div className="card  md:w-1/3 pb-5 shadow-2xl bg-base-100">
-                        <form onSubmit={handleSubmit(handleLogin)} className="p-5">
+                    <div className="card mt-32 md:w-1/3 pb-5 shadow-2xl bg-base-100">
+                        <form onSubmit={handleSubmit(handleSignUp)} className="p-5">
                             <h2 className='text-center mb-4 font-bold text-xl'>Place Login Now</h2>
 
 
                             <div className="form-control">
                                 <label className="label">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input {...register("name")} type="text" placeholder="Your Name" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input {...register("email")} type="email" placeholder="email" className="input input-bordered" />
+                                <input {...register("email")} type="email" placeholder="Your email" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Photo URL</span>
+                                </label>
+                                <input {...register("image")} type="text" placeholder="Your Photo URL" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -49,7 +64,7 @@ const Login = () => {
                         <div className="divider m-0">OR</div>
 
                         <label className="label flex justify-center">
-                            <Link to='/signup'><span className="label-text hover:text-blue-500">Create A New Account</span></Link>
+                            <Link to='/login'><span className="label-text hover:text-blue-500">Already have an account Login Now</span></Link>
 
                         </label>
 
@@ -61,4 +76,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;
