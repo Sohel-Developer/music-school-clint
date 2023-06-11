@@ -8,12 +8,8 @@ const Login = () => {
 
     const handleLogin = (data) => {
         // TODO: Login Implement In Firebase
-        // e.preventDefault()
         console.log(data);
 
-
-
-        console.log("Clicked");
     }
 
 

@@ -12,12 +12,7 @@ const SignUp = () => {
 
     const handleSignUp = (data) => {
         // TODO: Signup Implement In Firebase
-        // e.preventDefault()
         console.log(data);
-
-
-
-        console.log("Clicked");
     }
 
     return (
@@ -54,7 +49,8 @@ const SignUp = () => {
                                 </label>
                                 <input {...register("password")} type="password" placeholder="password" className="input input-bordered" />
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    {/* TODO: Forget Account Implement */}
+                                    <Link to='/' className="label-text-alt link link-hover">Forgot password?</Link>
                                 </label>
                             </div>
                             <div className="form-control mt-2">
