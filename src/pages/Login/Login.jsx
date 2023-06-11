@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 const Login = () => {
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const [passwordVisible, setPasswordVisible] = useState(false);
+
+    const handlePasswordToggle = () => {
+        setPasswordVisible(!passwordVisible);
+    };
 
     const handleLogin = (data) => {
         // TODO: Login Implement In Firebase
@@ -30,10 +38,12 @@ const Login = () => {
                                 <input {...register("email")} type="email" placeholder="email" className="input input-bordered" />
                             </div>
                             <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Password</span>
-                                </label>
-                                <input {...register("password")} type="password" placeholder="password" className="input input-bordered" />
+                                <div className='relative'>
+                                    <input  {...register("password")} type={passwordVisible ? 'text' : 'password'} placeholder="password" className="input input-bordered w-full" />
+                                    <button className='absolute right-4 top-3  ' onClick={handlePasswordToggle}>
+                                        {passwordVisible ? <FaEye className='text-2xl'></FaEye> : <FaEyeSlash className='text-2xl'></FaEyeSlash>}
+                                    </button>
+                                </div>
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>

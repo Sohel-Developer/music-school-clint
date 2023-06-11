@@ -9,7 +9,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 const SignUp = () => {
 
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -67,7 +67,7 @@ const SignUp = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-2">
-                                <input type='submit' className="btn btn-primary" value="Login" />
+                                <input type='submit' className="btn btn-primary" value="SignUp" />
                             </div>
                         </form>
                         <div className="divider m-0">OR</div>
