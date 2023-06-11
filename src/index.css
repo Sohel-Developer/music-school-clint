@@ -7,3 +7,10 @@
 .banner {
     background-image: url('./Images/banner(2).jpg');
 }
+
+.footer_bg {
+    background-image: url('./Images/footer.jpg');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
