@@ -7,17 +7,17 @@ const Manubar = () => {
 
 
     const menuItems = <>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/'>Instactor</Link></li>
-        <li><Link to='/'>Class</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+        <li><Link className='font-semibold text-xl' to='/'>Home</Link></li>
+        <li><Link className='font-semibold text-xl' to='/'>Instactor</Link></li>
+        <li><Link className='font-semibold text-xl' to='/'>Class</Link></li>
+        <li><Link className='font-semibold text-xl' to='/login'>Login</Link></li>
     </>
 
 
 
 
     return (
-        <div className='bg-gray-200'>
+        <div className='bg-gray-200  fixed w-full'>
             <div className="navbar max-w-7xl mx-auto ">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -31,7 +31,7 @@ const Manubar = () => {
                     <Link to="/"><img className='w-16' src={logo} /></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu menu-horizontal px-1 space-x-4">
                         {menuItems}
                     </ul>
                 </div>
