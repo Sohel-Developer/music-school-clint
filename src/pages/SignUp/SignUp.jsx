@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from '../Provider/AuthProvider';
 import { toast } from 'react-hot-toast';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 
 
@@ -129,6 +130,10 @@ const SignUp = () => {
                             <Link to='/login'><span className="label-text hover:text-blue-500">Already have an account Login Now</span></Link>
 
                         </label>
+
+                        <div>
+                            <SocialLogin />
+                        </div>
 
 
                     </div>

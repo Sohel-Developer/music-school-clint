@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
 
@@ -26,7 +27,7 @@ const Login = () => {
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content w-full  ">
 
-                    <div className="card  md:w-1/3 pb-5 shadow-2xl bg-base-100">
+                    <div className="card  md:w-1/3 pb-5 mt-5 shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(handleLogin)} className="p-5">
                             <h2 className='text-center mb-4 font-bold text-xl'>Place Login Now</h2>
 
@@ -37,7 +38,7 @@ const Login = () => {
                                 </label>
                                 <input {...register("email")} type="email" placeholder="email" className="input input-bordered" />
                             </div>
-                            <div className="form-control">
+                            <div className="form-control mt-5">
                                 <div className='relative'>
                                     <input  {...register("password")} type={passwordVisible ? 'text' : 'password'} placeholder="password" className="input input-bordered w-full" />
                                     <button className='absolute right-4 top-3  ' onClick={handlePasswordToggle}>
@@ -58,6 +59,10 @@ const Login = () => {
                             <Link to='/signup'><span className="label-text hover:text-blue-500">Create A New Account</span></Link>
 
                         </label>
+
+                        <div>
+                            <SocialLogin />
+                        </div>
 
 
                     </div>
