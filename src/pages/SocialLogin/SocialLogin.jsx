@@ -18,15 +18,36 @@ const SocialLogin = () => {
         googleSignIn()
             .then((data) => {
                 const loginUser = data.user;
+
                 toast.success('Successfully🤟 Google Login !')
 
-                const userSave = {}
+                const savedUser = {
+                    name: loginUser?.displayName,
+                    email: loginUser?.email,
+                    image: loginUser.photoURL,
+                    role: "student"
+                }
+
+                console.log(savedUser);
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(savedUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            toast.success('Saved User Successfully🤟 !')
+                        }
+                    })
 
                 /* Navigate */
                 navigate(from, { replace: true });
             })
     }
-
 
 
     return (

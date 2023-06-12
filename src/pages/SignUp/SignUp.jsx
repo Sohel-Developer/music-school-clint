@@ -47,7 +47,7 @@ const SignUp = () => {
                             name,
                             email,
                             image,
-                            role: "Student"
+                            role: "student"
                         }
 
                         fetch('http://localhost:5000/users', {
@@ -61,7 +61,10 @@ const SignUp = () => {
                             .then(data => {
                                 /* Form Reset */
                                 reset()
-                                toast.success('Saved User Successfully🤟 !')
+
+                                if (data.insertedId) {
+                                    toast.success('Saved User Successfully🤟 !')
+                                }
                             })
 
 
