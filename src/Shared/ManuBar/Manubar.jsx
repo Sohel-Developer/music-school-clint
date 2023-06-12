@@ -30,7 +30,7 @@ const Manubar = () => {
         <li><Link className='font-semibold text-xl' to='/'>Class</Link></li>
 
         {
-            user?.email ? <></> : <li><Link className='font-semibold text-xl' to='/'>Login</Link></li>
+            user?.email ? <></> : <li><Link className='font-semibold text-xl' to='/login'>Login</Link></li>
 
         }
     </>

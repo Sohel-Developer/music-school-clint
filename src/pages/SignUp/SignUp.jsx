@@ -9,106 +9,114 @@ import { toast } from 'react-hot-toast';
 
 
 const SignUp = () => {
-
-
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-
     const [passwordVisible, setPasswordVisible] = useState(false);
-
     const { createUser, userUpdateProfile } = useContext(AuthContext)
+    const [error, setError] = useState("")
     const navigate = useNavigate()
 
-    const handlePasswordToggle = () => {
+    const handlePasswordToggle = (e) => {
+        e.preventDefault()
         setPasswordVisible(!passwordVisible);
     };
 
+
     const handleSignUp = (data) => {
-        // TODO: Signup Implement In Firebase
         const { name, image, email, password } = data;
 
         const info = {
             displayName: name,
             photoURL: image
         }
-        console.log(info);
 
         createUser(email, password)
             .then((userCredential) => {
+                setError("")
                 const user = userCredential.user;
                 console.log(user)
                 toast.success(' Account Created Successfully🤟 !')
-
                 /* User Update  */
                 userUpdateProfile(info)
                     .then(() => {
+                        setError("")
                         // Profile updated!
                         toast.success('Profile Update Successfully🤟 !')
-
+                        // Navigate Home Page
                         navigate('/')
-                        // ...
                     }).catch((error) => {
-                        // An error occurred
-                        console.log(error);
+                        // Error Handeling
+                        setError(error)
                     });
 
             })
             .catch((error) => {
                 const errorMessage = error.message;
+                setError(errorMessage)
                 console.log(errorMessage);
             });
 
         /* Form Reset */
         reset()
-
-
-
-
-
-
     }
 
 
     return (
         <div>
             <div className="hero">
-                <div className="hero-content  w-full  ">
-
+                <div className="hero-content w-full">
                     <div className="card mt-32 md:w-1/3 pb-5 shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(handleSignUp)} className="p-5">
-                            <h2 className='text-center mb-4 font-bold text-xl'>Place Login Now</h2>
+                            <h2 className='text-center mb-4 font-bold text-xl'>Place SignUp Now</h2>
 
 
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input {...register("name")} type="text" placeholder="Your Name" className="input input-bordered" />
+                                <input {...register("name", { required: true })} type="text" placeholder="Your Name" className="input input-bordered" />
+                                {errors.name && <span className="label-text-alt mt-2 text-red-500 ">please Provide Your Name</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input {...register("email")} type="email" placeholder="Your email" className="input input-bordered" />
+                                <input {...register("email", { required: true })} type="email" placeholder="Your email" className="input input-bordered" />
+                                {errors.email && <span className="label-text-alt mt-2 text-red-500 ">please Provide Your Email</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
                                 </label>
-                                <input {...register("image")} type="text" placeholder="Your Photo URL" className="input input-bordered" />
+                                <input {...register("image", { required: true })} type="text" placeholder="Your Photo URL" className="input input-bordered" />
+                                {errors.image && <span className="label-text-alt mt-2 text-red-500 ">please Your Valid Profile Image Link</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
                                 <div className='relative'>
-                                    <input  {...register("password")} type={passwordVisible ? 'text' : 'password'} placeholder="password" className="input input-bordered w-full" />
+                                    <input   {...register("password", {
+                                        required: true,
+                                        minLength: 6,
+                                        maxLength: 20,
+                                        pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                    })} type={passwordVisible ? 'text' : 'password'} placeholder="password" className="input input-bordered w-full" />
                                     <button className='absolute right-4 top-3  ' onClick={handlePasswordToggle}>
                                         {passwordVisible ? <FaEye className='text-2xl'></FaEye> : <FaEyeSlash className='text-2xl'></FaEyeSlash>}
                                     </button>
                                 </div>
                                 <label className="label">
-                                    {/* TODO: Forget Account Implement */}
-                                    <Link to='/' className="label-text-alt link link-hover">Forgot password?</Link>
+                                    {/* All Error Show */}
+                                    {errors.password?.type === 'required' && <span className="label-text-alt text-red-500 ">Password is required</span>}
+                                    {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500 ">Password must be 6 creacters</span>}
+                                    {errors.password?.type === 'maxLength' && <span className="label-text-alt text-red-500 ">Password must be less then 20 creacters</span>}
+                                    {errors.password?.type === 'pattern' && <span className="label-text-alt text-red-500 ">Password must be one number,one capital letter,one special creacter & one lower case</span>}
+
+                                    {/* Firebase Error Controls */}
+                                    {
+                                        error && <span className="label-text-alt text-red-500 ">{error}</span>
+                                    }
+
                                 </label>
                             </div>
                             <div className="form-control mt-2">
