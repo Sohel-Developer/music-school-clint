@@ -1,16 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import logo from '../../Images/musci-school.png'
+import { AuthContext } from '../../pages/Provider/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const Manubar = () => {
+
+
+    const { user, userLogOut } = useContext(AuthContext)
+    console.log(user);
+
+    const handleSignOut = () => {
+
+        userLogOut()
+            .then(() => {
+                toast.success(' Successfully🤟 LogOut !')
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+
+    }
 
 
     const menuItems = <>
         <li><Link className='font-semibold text-xl' to='/'>Home</Link></li>
         <li><Link className='font-semibold text-xl' to='/'>Instactor</Link></li>
         <li><Link className='font-semibold text-xl' to='/'>Class</Link></li>
-        <li><Link className='font-semibold text-xl' to='/login'>Login</Link></li>
+
+        {
+            user?.email ? <></> : <li><Link className='font-semibold text-xl' to='/'>Login</Link></li>
+
+        }
     </>
 
 
@@ -26,6 +48,7 @@ const Manubar = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             {menuItems}
+
                         </ul>
                     </div>
                     <Link to="/"><img className='w-16' src={logo} /></Link>
@@ -50,11 +73,13 @@ const Manubar = () => {
                                     </label>
                                 </div>
                                 <div className="dropdown dropdown-end">
-                                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                        <div className="w-10 rounded-full">
-                                            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                                        </div>
-                                    </label>
+                                    {
+                                        user?.email && <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                            <div className="w-10 rounded-full">
+                                                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                            </div>
+                                        </label>
+                                    }
                                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                                         <li>
                                             <a className="justify-between">
@@ -62,7 +87,7 @@ const Manubar = () => {
                                                 <span className="badge">New</span>
                                             </a>
                                         </li>
-                                        <li><a>Logout</a></li>
+                                        <li><button onClick={handleSignOut}>LogOut</button></li>
                                     </ul>
                                 </div>
                             </div>

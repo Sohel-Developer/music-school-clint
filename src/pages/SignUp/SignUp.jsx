@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from '../Provider/AuthProvider';
@@ -15,7 +15,8 @@ const SignUp = () => {
 
     const [passwordVisible, setPasswordVisible] = useState(false);
 
-    const { createUser } = useContext(AuthContext)
+    const { createUser, userUpdateProfile } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handlePasswordToggle = () => {
         setPasswordVisible(!passwordVisible);
@@ -25,13 +26,31 @@ const SignUp = () => {
         // TODO: Signup Implement In Firebase
         const { name, image, email, password } = data;
 
-        console.log(name, image, email, password);
+        const info = {
+            displayName: name,
+            photoURL: image
+        }
+        console.log(info);
 
         createUser(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log(user)
                 toast.success(' Account Created Successfully🤟 !')
+
+                /* User Update  */
+                userUpdateProfile(info)
+                    .then(() => {
+                        // Profile updated!
+                        toast.success('Profile Update Successfully🤟 !')
+
+                        navigate('/')
+                        // ...
+                    }).catch((error) => {
+                        // An error occurred
+                        console.log(error);
+                    });
+
             })
             .catch((error) => {
                 const errorMessage = error.message;
