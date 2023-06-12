@@ -42,12 +42,37 @@ const SignUp = () => {
                         setError("")
                         // Profile updated!
                         toast.success('Profile Update Successfully🤟 !')
+
+                        const savedUser = {
+                            name,
+                            email,
+                            image,
+                            role: "Student"
+                        }
+
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(savedUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                /* Form Reset */
+                                reset()
+                                toast.success('Saved User Successfully🤟 !')
+                            })
+
+
                         // Navigate Home Page
                         navigate('/')
+
                     }).catch((error) => {
                         // Error Handeling
                         setError(error)
                     });
+
 
             })
             .catch((error) => {
@@ -56,8 +81,7 @@ const SignUp = () => {
                 console.log(errorMessage);
             });
 
-        /* Form Reset */
-        reset()
+
     }
 
 

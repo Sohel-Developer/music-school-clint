@@ -20,6 +20,8 @@ const SocialLogin = () => {
                 const loginUser = data.user;
                 toast.success('Successfully🤟 Google Login !')
 
+                const userSave = {}
+
                 /* Navigate */
                 navigate(from, { replace: true });
             })
