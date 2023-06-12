@@ -22,6 +22,21 @@ const AllUsers = () => {
     const Admin = users.filter(user => user.role === "admin")
 
 
+    const handleMakeAdmin = user => {
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    // refetch();
+
+                }
+            })
+    }
+
+
     return (
         <div>
             {/* // <!-- Start Content --> */}
@@ -31,51 +46,6 @@ const AllUsers = () => {
                 <UserCard title='Admin' users={Admin} />
                 <UserCard title='Instructor' users={Instructor} />
                 <UserCard title='student' users={student} />
-
-                {/* <div className="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
-                    <div className="flex items-start justify-between">
-                        <div className="flex flex-col space-y-2">
-                            <span className="text-gray-400">Total Users</span>
-                            <span className="text-lg font-semibold">{users.length}</span>
-                        </div>
-                        <div className="p-5 bg-gray-200 rounded-md">
-                            <FaUsers />
-                        </div>
-                    </div>
-                </div>
-                <div className="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
-                    <div className="flex items-start justify-between">
-                        <div className="flex flex-col space-y-2">
-                            <span className="text-gray-400">Total Student</span>
-                            <span className="text-lg font-semibold">{student.length}</span>
-                        </div>
-                        <div className="p-5 bg-gray-200 rounded-md">
-                            <FaUsers />
-                        </div>
-                    </div>
-                </div>
-                <div className="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
-                    <div className="flex items-start justify-between">
-                        <div className="flex flex-col space-y-2">
-                            <span className="text-gray-400">Total Instructor </span>
-                            <span className="text-lg font-semibold">{Instructor.length}</span>
-                        </div>
-                        <div className="p-5 bg-gray-200 rounded-md">
-                            <FaUsers />
-                        </div>
-                    </div>
-                </div>
-                <div className="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
-                    <div className="flex items-start justify-between">
-                        <div className="flex flex-col space-y-2">
-                            <span className="text-gray-400">Total Admin </span>
-                            <span className="text-lg font-semibold">{Admin.length}</span>
-                        </div>
-                        <div className="p-5 bg-gray-200 rounded-md">
-                            <FaUsers />
-                        </div>
-                    </div>
-                </div> */}
 
 
             </div>
@@ -120,7 +90,7 @@ const AllUsers = () => {
                                 <tbody className="bg-white divide-y divide-gray-200">
 
                                     {
-                                        users.map((user) => <User key={user._id} user={user} ></User>
+                                        users.map((user) => <User handleMakeAdmin={handleMakeAdmin} key={user._id} user={user} ></User>
                                         )
                                     }
 
