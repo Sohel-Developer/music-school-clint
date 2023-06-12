@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import swal from 'sweetalert';
 import {
     useQuery,
 } from '@tanstack/react-query'
 import User from './User';
 import UserCard from './UserCard';
+import { toast } from 'react-hot-toast';
 const AllUsers = () => {
 
 
@@ -36,6 +38,39 @@ const AllUsers = () => {
 
                 }
             })
+    }
+    const handleDelete = user => {
+
+        swal({
+            title: "Are you sure?",
+            text: `If Users Deleted ${user.name}`,
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+
+                    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data)
+                            refetch();
+                            if (data.deletedCount > 0) {
+                                toast.success('User Deleted Succesfully!')
+                            }
+                        })
+                } else {
+                    toast.success("User is No Deleted !! it's safe!")
+                }
+            });
+
+
+
+
+
     }
 
 
@@ -92,7 +127,11 @@ const AllUsers = () => {
                                 <tbody className="bg-white divide-y divide-gray-200">
 
                                     {
-                                        users.map((user) => <User handleMakeAdmin={handleMakeAdmin} key={user._id} user={user} ></User>
+                                        users.map((user) => <User
+                                            handleDelete={handleDelete}
+                                            handleMakeAdmin={handleMakeAdmin}
+                                            key={user._id}
+                                            user={user} ></User>
                                         )
                                     }
 

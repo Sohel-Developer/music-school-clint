@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUtensils, FaBook, FaUsers } from 'react-icons/fa';
+import { Toaster } from 'react-hot-toast';
 
 
 const DashBordLayout = () => {
@@ -49,6 +50,10 @@ const DashBordLayout = () => {
             </div>
             <div className=' border-4 p-5 flex-1'>
                 <Outlet />
+                <Toaster
+                    position="top-right"
+                    reverseOrder={false}
+                />
             </div>
 
         </div>
