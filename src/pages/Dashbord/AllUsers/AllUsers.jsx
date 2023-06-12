@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { FaUsers } from "react-icons/fa";
+import {
+    useQuery,
+} from '@tanstack/react-query'
 import User from './User';
 import UserCard from './UserCard';
 const AllUsers = () => {
 
 
-    const [users, setUsers] = useState([])
+    const { isLoading, error, data: users, refetch } = useQuery({
+        queryKey: ['users'],
+        queryFn: () =>
+            fetch('http://localhost:5000/users').then(
+                (res) => res.json(),
+            ),
+    })
 
-    useEffect(() => {
-        fetch('http://localhost:5000/users')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setUsers(data)
 
-            })
-    }, [])
+    if (isLoading) return 'Loading...'
+
 
     const student = users.filter(user => user.role === "student")
     const Instructor = users.filter(user => user.role === "instructor ")
@@ -30,7 +32,7 @@ const AllUsers = () => {
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount) {
-                    // refetch();
+                    refetch();
 
                 }
             })
