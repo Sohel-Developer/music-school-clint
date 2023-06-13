@@ -6,23 +6,31 @@ import {
 import User from './User';
 import UserCard from './UserCard';
 import { toast } from 'react-hot-toast';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 const AllUsers = () => {
 
+    const [axiosSecure] = useAxiosSecure()
 
-    const { isLoading, error, data: users, refetch } = useQuery({
+    const { isLoading, error, data: users = [], refetch } = useQuery({
         queryKey: ['users'],
-        queryFn: () =>
-            fetch('http://localhost:5000/users').then(
-                (res) => res.json(),
-            ),
+        // queryFn: () =>
+        //     fetch('http://localhost:5000/users')
+        //     .then((res) => res.json(),
+        //     ),
+        queryFn: async () => {
+            const res = await axiosSecure('/users')
+            return res.data
+        }
     })
+
+
 
 
     if (isLoading) return 'Loading...'
 
 
     const student = users.filter(user => user.role === "student")
-    const Instructor = users.filter(user => user.role === "instructor ")
+    const Instructor = users.filter(user => user.role === "instructor")
     const Admin = users.filter(user => user.role === "admin")
 
 

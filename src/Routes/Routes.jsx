@@ -7,6 +7,8 @@ import SignUp from "../pages/SignUp/SignUp";
 import NotFound from "../pages/NotFound/NotFound";
 import AllUsers from "../Pages/Dashbord/AllUsers/AllUsers";
 import DashBordLayout from "../Layout/DashBordLayout";
+import AdminRoute from "./AdminRoute";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -29,12 +31,13 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashbord',
-        element: <DashBordLayout />,
+        element: <PrivateRoute><DashBordLayout /></PrivateRoute>,
         children: [
             {
                 path: 'users',
-                element: <AllUsers />
+                element: <AdminRoute><AllUsers /></AdminRoute>
             }
+
         ]
     },
     {

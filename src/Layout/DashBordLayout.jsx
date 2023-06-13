@@ -2,12 +2,18 @@ import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUtensils, FaBook, FaUsers } from 'react-icons/fa';
 import { Toaster } from 'react-hot-toast';
+import useAdmin from '../pages/Hooks/useAdmin';
 
 
 const DashBordLayout = () => {
 
-    const isAdmin = true
-    const isInstactor = false
+
+    const { isAdmin } = useAdmin()
+    console.log(isAdmin);
+
+
+    // const isAdmin = true
+    // const isInstactor = false
     return (
         <div className='flex gap-5'>
             <div className='h-screen p-5 border-4 '>
@@ -18,8 +24,8 @@ const DashBordLayout = () => {
                             <li><NavLink to="/dashboard/addItem"> <FaUtensils></FaUtensils> Manege Classes</NavLink></li>
                             <li><NavLink to="/dashbord/users"><FaUsers></FaUsers> All Users</NavLink></li>
 
-                        </> : isInstactor ? <>
-                            <li><NavLink to="/dashboard/userhome"><FaHome></FaHome> Instactor Home</NavLink></li>
+                        </> : <>
+                            <li><NavLink to="/dashboard"><FaHome></FaHome> Instactor Home</NavLink></li>
                             <li><NavLink to="/"><FaCalendarAlt></FaCalendarAlt> Add a Class</NavLink></li>
                             <li><NavLink to="/"><FaWallet></FaWallet> My Classes</NavLink></li>
                             <li>
@@ -31,13 +37,6 @@ const DashBordLayout = () => {
                                 </NavLink>
                             </li>
                         </>
-                            :
-                            <>
-                                <li><NavLink to="/"><FaWallet></FaWallet> Selected Classes</NavLink></li>
-                                <li><NavLink to="/"><FaWallet></FaWallet> Eneolled Classes</NavLink></li>
-                                <li><NavLink to="/"><FaWallet></FaWallet> Payment</NavLink></li>
-                                <li><NavLink to="/"><FaWallet></FaWallet> Payment History</NavLink></li>
-                            </>
                     }
 
 
