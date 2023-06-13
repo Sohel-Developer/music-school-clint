@@ -14,7 +14,7 @@ const AddClass = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const handleAddClass = (data) => {
-        const { image, name, price, seats } = data;
+        const { image, name, price, seats, description } = data;
         console.log(data);
 
         const classSave = {
@@ -22,6 +22,8 @@ const AddClass = () => {
             price,
             seats,
             image,
+            description,
+            student: 0,
             status: "pending",
             instructorName: user?.displayName,
             instructorEmail: user?.email
@@ -82,6 +84,12 @@ const AddClass = () => {
                                 </label>
                                 <input {...register("price")} type="number" placeholder="Price" className="input input-bordered" />
                             </div>
+                        </div>
+                        <div className="form-control w-full">
+                            <label className="label">
+                                <span className="label-text">description</span>
+                            </label>
+                            <textarea {...register("description")} type="text" placeholder="description" className="input input-bordered" />
                         </div>
 
                         <div className="form-control mt-2">

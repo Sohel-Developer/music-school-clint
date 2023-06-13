@@ -1,6 +1,8 @@
 import React from 'react';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 const AllClass = () => {
 
@@ -9,12 +11,6 @@ const AllClass = () => {
 
     const { isLoading, error, data: classes, refetch } = useQuery({
         queryKey: ['classes'],
-        // queryFn: () =>
-        //     fetch(`http://localhost:5000/classes/${user?.email}`).then(
-        //         (res) => res.json(),
-        //     ),
-
-        // queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure(`/classes`)
             return res.data
@@ -27,6 +23,16 @@ const AllClass = () => {
 
 
 
+
+
+    const handleAdd = (data) => {
+
+        axios.post('http://localhost:5000/class/selected', data)
+            .then(data => {
+                toast.success(`Successfully Classes Added!`)
+            })
+
+    }
 
 
     return (
@@ -54,7 +60,7 @@ const AllClass = () => {
                                 <div className="badge badge-outline">Seats-{item.seats}</div>
                                 <div className="badge badge-outline">Student Enroled {item?.student || 0}</div>
                             </div>
-                            <button className='btn mt-4'>Add Class</button>
+                            <button onClick={() => handleAdd(item)} className='btn mt-4'>Add Class</button>
                         </div>
                     </div>)
                 }
