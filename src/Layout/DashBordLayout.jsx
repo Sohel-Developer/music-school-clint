@@ -3,13 +3,17 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUtensils, FaBook, FaUsers } from 'react-icons/fa';
 import { Toaster } from 'react-hot-toast';
 import useAdmin from '../pages/Hooks/useAdmin';
+import useInstructor from '../pages/Hooks/useInstructor';
 
 
 const DashBordLayout = () => {
 
 
-    const { isAdmin } = useAdmin()
-    console.log(isAdmin);
+    const [isAdmin] = useAdmin()
+
+    const [isInstructor] = useInstructor()
+
+    console.log(isInstructor);
 
 
     // const isAdmin = true
@@ -24,8 +28,8 @@ const DashBordLayout = () => {
                             <li><NavLink to="/dashboard/addItem"> <FaUtensils></FaUtensils> Manege Classes</NavLink></li>
                             <li><NavLink to="/dashbord/users"><FaUsers></FaUsers> All Users</NavLink></li>
 
-                        </> : <>
-                            <li><NavLink to="/dashboard"><FaHome></FaHome> Instactor Home</NavLink></li>
+                        </> : isInstructor ? <>
+                            <li><NavLink to="/dashboard"><FaHome></FaHome> instructor Home</NavLink></li>
                             <li><NavLink to="/"><FaCalendarAlt></FaCalendarAlt> Add a Class</NavLink></li>
                             <li><NavLink to="/"><FaWallet></FaWallet> My Classes</NavLink></li>
                             <li>
@@ -37,6 +41,16 @@ const DashBordLayout = () => {
                                 </NavLink>
                             </li>
                         </>
+                            :
+                            <>
+                                <li><NavLink to="/dashboard"><FaHome></FaHome> Student Home</NavLink></li>
+                                <li><NavLink to="/"><FaCalendarAlt></FaCalendarAlt> Selected Classes</NavLink></li>
+                                <li><NavLink to="/"><FaWallet></FaWallet> Enrolled Classes</NavLink></li>
+                                <li>
+                                    <NavLink to="/dashboard/mycart"><FaShoppingCart></FaShoppingCart> Payment
+                                    </NavLink>
+                                </li>
+                            </>
                     }
 
 
