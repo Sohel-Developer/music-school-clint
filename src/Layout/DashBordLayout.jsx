@@ -25,29 +25,29 @@ const DashBordLayout = () => {
                     {
                         isAdmin ? <>
                             <li><NavLink to="/dashbord/adminhome" ><FaHome></FaHome> Admin Home</NavLink></li>
-                            <li><NavLink to="/dashboard/addItem"> <FaUtensils></FaUtensils> Manege Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/manages">  Manege Classes</NavLink></li>
                             <li><NavLink to="/dashbord/users"><FaUsers></FaUsers> All Users</NavLink></li>
 
                         </> : isInstructor ? <>
                             <li><NavLink to="/dashboard"><FaHome></FaHome> instructor Home</NavLink></li>
-                            <li><NavLink to="/"><FaCalendarAlt></FaCalendarAlt> Add a Class</NavLink></li>
-                            <li><NavLink to="/"><FaWallet></FaWallet> My Classes</NavLink></li>
+                            <li><NavLink to="/dashbord/addclass"> Add a Class</NavLink></li>
+                            <li><NavLink to="/"> My Classes</NavLink></li>
                             <li>
-                                <NavLink to="/dashboard/mycart"><FaShoppingCart></FaShoppingCart> Total Student
+                                <NavLink to="/dashboard/mycart"> Total Student
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/mycart"><FaShoppingCart></FaShoppingCart> Feedback
+                                <NavLink to="/dashboard/feedback"> Feedback
                                 </NavLink>
                             </li>
                         </>
                             :
                             <>
                                 <li><NavLink to="/dashboard"><FaHome></FaHome> Student Home</NavLink></li>
-                                <li><NavLink to="/"><FaCalendarAlt></FaCalendarAlt> Selected Classes</NavLink></li>
-                                <li><NavLink to="/"><FaWallet></FaWallet> Enrolled Classes</NavLink></li>
+                                <li><NavLink to="/dashbord/class">Selected Classes</NavLink></li>
+                                <li><NavLink to="/dashbord/enroled"> Enrolled Classes</NavLink></li>
                                 <li>
-                                    <NavLink to="/dashboard/mycart"><FaShoppingCart></FaShoppingCart> Payment
+                                    <NavLink to="/dashboard/payment"><FaWallet></FaWallet> Payment
                                     </NavLink>
                                 </li>
                             </>
