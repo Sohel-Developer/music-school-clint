@@ -54,6 +54,7 @@ const AllClass = () => {
                                 <div className="badge badge-outline">Seats-{item.seats}</div>
                                 <div className="badge badge-outline">Student Enroled {item?.student || 0}</div>
                             </div>
+                            <button className='btn mt-4'>Add Class</button>
                         </div>
                     </div>)
                 }

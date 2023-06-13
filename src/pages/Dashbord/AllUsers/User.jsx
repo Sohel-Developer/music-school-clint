@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaTrashAlt, FaUserGraduate, FaUserShield } from 'react-icons/fa';
 
-const User = ({ user, handleMakeAdmin, handleDelete }) => {
+const User = ({ user, handleMakeAdmin, handleDelete, handleMakeInstructor }) => {
     return (
         <tr className="transition-all hover:bg-gray-100 hover:shadow-lg">
             <td className="px-6 py-4 whitespace-nowrap">
@@ -29,7 +29,7 @@ const User = ({ user, handleMakeAdmin, handleDelete }) => {
 
             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap"><ul className="menu menu-horizontal bg-base-200 rounded-box">
                 <li>
-                    <button><FaUserGraduate className='text-2xl' /></button>
+                    <button onClick={() => handleMakeInstructor(user)}><FaUserGraduate className='text-2xl' /></button>
                 </li>
                 <li>
                     <button onClick={() => handleMakeAdmin(user)}><FaUserShield className='text-2xl' /></button>

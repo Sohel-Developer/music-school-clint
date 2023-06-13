@@ -43,6 +43,21 @@ const AllUsers = () => {
                 }
             })
     }
+
+    const handleMakeInstructor = user => {
+        fetch(`http://localhost:5000/instructor/admin/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch();
+
+                }
+            })
+    }
+
     const handleDelete = user => {
 
         swal({
@@ -134,6 +149,7 @@ const AllUsers = () => {
                                         users.map((user) => <User
                                             handleDelete={handleDelete}
                                             handleMakeAdmin={handleMakeAdmin}
+                                            handleMakeInstructor={handleMakeInstructor}
                                             key={user._id}
                                             user={user} ></User>
                                         )
