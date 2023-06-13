@@ -25,13 +25,13 @@ const DashBordLayout = () => {
                     {
                         isAdmin ? <>
                             <li><NavLink to="/dashbord/adminhome" ><FaHome></FaHome> Admin Home</NavLink></li>
-                            <li><NavLink to="/dashboard/manages">  Manege Classes</NavLink></li>
+                            <li><NavLink to="/dashbord/manages">  Manege Classes</NavLink></li>
                             <li><NavLink to="/dashbord/users"><FaUsers></FaUsers> All Users</NavLink></li>
 
                         </> : isInstructor ? <>
                             <li><NavLink to="/dashboard"><FaHome></FaHome> instructor Home</NavLink></li>
                             <li><NavLink to="/dashbord/addclass"> Add a Class</NavLink></li>
-                            <li><NavLink to="/"> My Classes</NavLink></li>
+                            <li><NavLink to="/dashbord/classes"> My Classes</NavLink></li>
                             <li>
                                 <NavLink to="/dashboard/mycart"> Total Student
                                 </NavLink>

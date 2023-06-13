@@ -13,10 +13,6 @@ const AllUsers = () => {
 
     const { isLoading, error, data: users = [], refetch } = useQuery({
         queryKey: ['users'],
-        // queryFn: () =>
-        //     fetch('http://localhost:5000/users')
-        //     .then((res) => res.json(),
-        //     ),
         queryFn: async () => {
             const res = await axiosSecure('/users')
             return res.data
