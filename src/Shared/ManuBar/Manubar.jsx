@@ -9,7 +9,6 @@ const Manubar = () => {
 
 
     const { user, userLogOut } = useContext(AuthContext)
-    console.log(user);
 
     const handleSignOut = () => {
 

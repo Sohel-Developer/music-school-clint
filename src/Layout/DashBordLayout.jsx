@@ -13,11 +13,6 @@ const DashBordLayout = () => {
 
     const [isInstructor] = useInstructor()
 
-    console.log(isInstructor);
-
-
-    // const isAdmin = true
-    // const isInstactor = false
     return (
         <div className='flex gap-5'>
             <div className='h-screen p-5 border-4 '>

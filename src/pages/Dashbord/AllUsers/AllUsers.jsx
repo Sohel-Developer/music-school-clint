@@ -37,22 +37,25 @@ const AllUsers = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                refetch();
                 if (data.modifiedCount) {
-                    refetch();
+                    toast.success(`Make Admin Succesfully! ${user.name}`)
 
                 }
             })
     }
 
     const handleMakeInstructor = user => {
-        fetch(`http://localhost:5000/instructor/admin/${user._id}`, {
+        fetch(`http://localhost:5000/instructor/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
             .then(data => {
+                refetch();
                 console.log(data)
                 if (data.modifiedCount) {
-                    refetch();
+
+                    toast.success(`Make Instructor Succesfully! ${user.name}`)
 
                 }
             })

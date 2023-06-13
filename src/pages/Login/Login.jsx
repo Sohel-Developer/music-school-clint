@@ -30,7 +30,6 @@ const Login = () => {
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
                 toast.success(`Successfully Login🤟 WellCome Back ${user.displayName}!`)
                 navigate(from, { replace: true });
             })

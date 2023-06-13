@@ -34,7 +34,6 @@ const SignUp = () => {
             .then((userCredential) => {
                 setError("")
                 const user = userCredential.user;
-                console.log(user)
                 toast.success(' Account Created Successfully🤟 !')
                 /* User Update  */
                 userUpdateProfile(info)
