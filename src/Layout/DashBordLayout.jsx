@@ -39,7 +39,7 @@ const DashBordLayout = () => {
                             :
                             <>
                                 <li><NavLink to="/dashboard"><FaHome></FaHome> Student Home</NavLink></li>
-                                <li><NavLink to="/dashbord/class">Selected Classes</NavLink></li>
+                                <li><NavLink to="/dashbord/selected">Selected Classes</NavLink></li>
                                 <li><NavLink to="/dashbord/enroled"> Enrolled Classes</NavLink></li>
                                 <li>
                                     <NavLink to="/dashboard/payment"><FaWallet></FaWallet> Payment

@@ -18,10 +18,6 @@ const AllUsers = () => {
             return res.data
         }
     })
-
-
-
-
     if (isLoading) return 'Loading...'
 
 
