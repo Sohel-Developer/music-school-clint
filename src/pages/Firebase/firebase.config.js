@@ -2,12 +2,14 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCHvNPpAdEl834NHeUvAfP4F8l1hH_yiNs",
-    authDomain: "music-school-9e40b.firebaseapp.com",
-    projectId: "music-school-9e40b",
-    storageBucket: "music-school-9e40b.appspot.com",
-    messagingSenderId: "203678954522",
-    appId: "1:203678954522:web:f54abd937c413868afcda3"
+
+    apiKey: import.meta.env.VITE_apiKey,
+    authDomain: import.meta.env.VITE_authDomain,
+    projectId: import.meta.env.VITE_projectId,
+    storageBucket: import.meta.env.VITE_storageBucket,
+    messagingSenderId: import.meta.env.VITE_messagingSenderId,
+    appId: import.meta.env.VITE_appId
+
 };
 
 const app = initializeApp(firebaseConfig);

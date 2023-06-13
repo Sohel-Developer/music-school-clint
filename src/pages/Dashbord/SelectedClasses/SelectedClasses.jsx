@@ -1,21 +1,12 @@
 import React from 'react';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
-import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 import swal from 'sweetalert';
+import useSelectedClass from '../../Hooks/useSelectedClass';
 
 const SelectedClasses = () => {
 
+    const [data, isLoading, refetch] = useSelectedClass()
 
-    const [axiosSecure] = useAxiosSecure()
-
-    const { isLoading, error, data, refetch } = useQuery({
-        queryKey: ['users'],
-        queryFn: async () => {
-            const res = await axiosSecure('/selected/classes')
-            return res.data
-        }
-    })
 
     if (isLoading) return 'Loading...'
 
