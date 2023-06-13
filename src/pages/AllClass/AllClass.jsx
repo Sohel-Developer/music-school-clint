@@ -36,14 +36,13 @@ const AllClass = () => {
 
 
     return (
-        <div className='pt-24'>
+        <div className='pt-24 max-w-7xl mx-auto'>
 
-            <h1>All Classes {classes.length}</h1>
 
-            <div className='grid grid-cols-3'>
+            <div className='grid md:grid-cols-2 lg:grid-cols-3'>
 
                 {
-                    classes.map(item => <div key={item._id} className="card w-96 bg-base-100 shadow-xl">
+                    classes.map(item => <div key={item._id} className="card mt-12 w-96 bg-base-100 shadow-xl">
                         <figure><img src={item.image} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">
@@ -66,7 +65,6 @@ const AllClass = () => {
                 }
 
             </div>
-            All Class
         </div>
     );
 };

@@ -10,7 +10,10 @@ const mainLayout = () => {
             <Manubar />
             <Outlet />
             <Footer />
-            <Toaster />
+            <Toaster
+                position="top-right"
+                reverseOrder={false}
+            />
         </div>
     );
 };

@@ -51,11 +51,11 @@ const SelectedClasses = () => {
     }
 
     return (
-        <div className='bg-base-200 h-screen'>
-            <h1 className=''>Selected Class {data?.length}</h1>
-            <div >
+        <div className='bg-base-200  h-screen'>
+            <h1 className='p-5'>Selected Class {data?.length}</h1>
+            <div>
                 {
-                    data.map(item => <div key={item._id} className="transition-all w-1/2 mx-auto justify-between flex items-center mt-5 rounded-lg bg-gray-200 hover:shadow-lg">
+                    data.map(item => <div key={item._id} className="transition-all w-2/3 mx-auto justify-between flex items-center mt-5 rounded-lg bg-gray-200 hover:shadow-lg">
                         <div className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center">
                                 <div className="flex-shrink-0 w-10 h-10">
@@ -76,6 +76,13 @@ const SelectedClasses = () => {
                                 className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"
                             >
                                 $ {item.price}
+                            </span>
+                        </div>
+                        <div>
+                            <span
+                                className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"
+                            >
+                                $ {item?.payment || "Not Pay"}
                             </span>
                         </div>
 
