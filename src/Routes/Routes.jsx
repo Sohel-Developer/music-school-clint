@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddClass from "../pages/Dashbord/AddClass/AddClass";
 import MyClasses from "../pages/Dashbord/MyClasses/MyClasses";
 import ManagesClasses from "../pages/Dashbord/ManagesClasses/ManagesClasses";
+import AllClass from "../pages/AllClass/AllClass";
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
+            },
+            {
+                path: '/allclass',
+                element: <AllClass />
             },
             {
                 path: 'login',

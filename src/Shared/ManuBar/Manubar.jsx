@@ -27,7 +27,7 @@ const Manubar = () => {
     const menuItems = <>
         <li><Link className='font-semibold text-xl' to='/'>Home</Link></li>
         <li><Link className='font-semibold text-xl' to='/'>Instactor</Link></li>
-        <li><Link className='font-semibold text-xl' to='/'>Class</Link></li>
+        <li><Link className='font-semibold text-xl' to='/allclass'> All Class</Link></li>
 
         {
             user?.email ? <>

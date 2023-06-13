@@ -85,6 +85,7 @@ const ManagesClasses = () => {
                                     {
                                         classes.map((user) => <ClassesRow
                                             key={user._id}
+                                            refetch={refetch}
                                             classItem={user} ></ClassesRow>
                                         )
                                     }

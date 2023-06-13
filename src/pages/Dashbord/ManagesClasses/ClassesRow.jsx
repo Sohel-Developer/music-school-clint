@@ -1,8 +1,60 @@
-import React from 'react';
 
-const ClassesRow = ({ classItem }) => {
+import React from 'react';
+import { toast } from 'react-hot-toast';
+import swal from 'sweetalert';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
+
+const ClassesRow = ({ classItem, refetch }) => {
     console.log("Class Row", classItem);
-    const { image, name, price, seats, status, instructorName, instructorEmail } = classItem
+    const { _id, image, name, price, seats, status, instructorName, instructorEmail } = classItem;
+
+
+    const desabld = status === "pending"
+
+
+    const handelApproved = (id) => {
+
+
+        swal({
+            title: "Are you sure?",
+            text: ` Instructor Class Approved `,
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+
+                    fetch(`http://localhost:5000/class/${id}`, {
+                        method: 'PATCH'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            refetch()
+
+                            console.log(data)
+                            if (data.deletedCount > 0) {
+                                toast.success('User Class Approved Succesfully!')
+                            }
+                        })
+                } else {
+                    toast.success("User Class Not Approved!")
+                }
+            });
+
+
+
+
+    }
+
+
+
+
+
+
+
+
     return (
         <tr className="transition-all hover:bg-gray-100 hover:shadow-lg">
             <td className="px-6 py-4 whitespace-nowrap">
@@ -54,17 +106,17 @@ const ClassesRow = ({ classItem }) => {
 
             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap"><ul className="menu menu-vertical bg-base-200 rounded-box">
                 <li>
-                    <button> Apporve</button>
+                    <button disabled={status === "approve" && true} onClick={() => { handelApproved(_id) }} > Apporve</button>
                 </li>
                 <li>
-                    <button >Pendig</button>
+                    <button disabled={status === "approve" && true} >Denied</button>
                 </li>
                 <li>
-                    <button>Feadback</button>
+                    <button disabled={status === "approve" && true}>Feadback</button>
                 </li>
             </ul>
             </td>
-        </tr>
+        </tr >
     );
 };
 
