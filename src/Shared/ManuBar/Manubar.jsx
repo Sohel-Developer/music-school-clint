@@ -7,9 +7,13 @@ import { toast } from 'react-hot-toast';
 import useSelectedClass from '../../pages/Hooks/useSelectedClass';
 
 const Manubar = () => {
-
-    const [data, ,] = useSelectedClass()
     const { user, userLogOut } = useContext(AuthContext)
+    const [data, ,] = useSelectedClass()
+
+
+
+
+
     const handleSignOut = () => {
         userLogOut()
             .then(() => {

@@ -2,16 +2,9 @@
 import React from 'react';
 import { toast } from 'react-hot-toast';
 import swal from 'sweetalert';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
-import { useQuery } from '@tanstack/react-query';
 
 const ClassesRow = ({ classItem, refetch }) => {
-    console.log("Class Row", classItem);
     const { _id, image, name, price, seats, status, instructorName, instructorEmail } = classItem;
-
-
-    const desabld = status === "pending"
-
 
     const handelApproved = (id) => {
 
@@ -25,15 +18,12 @@ const ClassesRow = ({ classItem, refetch }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-
                     fetch(`http://localhost:5000/class/${id}`, {
                         method: 'PATCH'
                     })
                         .then(res => res.json())
                         .then(data => {
                             refetch()
-
-                            console.log(data)
                             if (data.deletedCount > 0) {
                                 toast.success('User Class Approved Succesfully!')
                             }
@@ -43,17 +33,7 @@ const ClassesRow = ({ classItem, refetch }) => {
                 }
             });
 
-
-
-
     }
-
-
-
-
-
-
-
 
     return (
         <tr className="transition-all hover:bg-gray-100 hover:shadow-lg">

@@ -9,13 +9,10 @@ const AddClass = () => {
 
     const { user } = useAuth()
 
-
-
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const handleAddClass = (data) => {
         const { image, name, price, seats, description } = data;
-        console.log(data);
 
         const classSave = {
             name,

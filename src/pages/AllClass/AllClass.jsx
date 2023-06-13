@@ -3,8 +3,11 @@ import useAxiosSecure from '../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import useAuth from '../Hooks/useAuth';
 
 const AllClass = () => {
+
+    const { user } = useAuth()
 
     const [axiosSecure] = useAxiosSecure()
     // /classes/:${user?.email}
@@ -27,7 +30,21 @@ const AllClass = () => {
 
     const handleAdd = (data) => {
 
-        axios.post('http://localhost:5000/class/selected', data)
+        const { _id, name, price, image, instructorName, instructorEmail } = data;
+
+        const savedData = {
+            studentEmail: user.email,
+            name,
+            image,
+            price,
+            payment: "No Payment",
+            classId: _id,
+            instructorName,
+            instructorEmail
+        }
+
+
+        axios.post('http://localhost:5000/class/selected', savedData)
             .then(data => {
                 toast.success(`Successfully Classes Added!`)
             })
@@ -37,8 +54,6 @@ const AllClass = () => {
 
     return (
         <div className='pt-24 max-w-7xl mx-auto'>
-
-
             <div className='grid md:grid-cols-2 lg:grid-cols-3'>
 
                 {
