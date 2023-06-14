@@ -1,6 +1,6 @@
 import React from 'react';
 
-import logo from '../../Images/musci-school.png'
+
 import { Link } from 'react-router-dom';
 
 const NotFound = () => {
@@ -14,7 +14,7 @@ const NotFound = () => {
                 </div>
                 <img
                     className="w-64 h-64 mt-8"
-                    src={logo}
+                    src='https://i.ibb.co/BNZ2Dzj/musci-school.png'
                     alt="404"
                 />
                 <Link
