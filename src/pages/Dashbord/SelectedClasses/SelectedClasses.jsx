@@ -2,6 +2,7 @@ import React from 'react';
 import { toast } from 'react-hot-toast';
 import swal from 'sweetalert';
 import useSelectedClass from '../../Hooks/useSelectedClass';
+import { Helmet } from 'react-helmet';
 
 const SelectedClasses = () => {
 
@@ -42,6 +43,9 @@ const SelectedClasses = () => {
 
     return (
         <div className='bg-base-200  h-screen'>
+            <Helmet>
+                <title>Music School | Selected</title>
+            </Helmet>
             <h1 className='p-5'>Selected Class {data?.length}</h1>
             <div>
                 {

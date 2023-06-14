@@ -2,6 +2,7 @@ import React from 'react';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../Hooks/useAuth';
+import { Helmet } from 'react-helmet';
 
 const MyClasses = () => {
     const { user } = useAuth()
@@ -31,6 +32,9 @@ const MyClasses = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Music School | My Class</title>
+            </Helmet>
             My Classes {classes.length}
             <div className='grid md:grid-cols-2 '>
 

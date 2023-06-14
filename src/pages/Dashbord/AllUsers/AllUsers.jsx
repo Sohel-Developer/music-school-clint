@@ -7,6 +7,7 @@ import User from './User';
 import UserCard from './UserCard';
 import { toast } from 'react-hot-toast';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import { Helmet } from 'react-helmet';
 const AllUsers = () => {
 
     const [axiosSecure] = useAxiosSecure()
@@ -94,6 +95,9 @@ const AllUsers = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Music School | All Users</title>
+            </Helmet>
             {/* // <!-- Start Content --> */}
             <div className="grid grid-cols-1 gap-5 mt-6 sm:grid-cols-2 lg:grid-cols-4">
 

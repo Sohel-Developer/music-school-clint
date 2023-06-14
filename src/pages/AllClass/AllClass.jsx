@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import useAuth from '../Hooks/useAuth';
+import { Helmet } from 'react-helmet';
 
 const AllClass = () => {
 
@@ -54,6 +55,9 @@ const AllClass = () => {
 
     return (
         <div className='pt-24 max-w-7xl mx-auto'>
+            <Helmet>
+                <title>Music School | All Class</title>
+            </Helmet>
             <div className='grid md:grid-cols-2 lg:grid-cols-3'>
 
                 {

@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../Hooks/useAuth';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 
 
 const AddClass = () => {
@@ -37,6 +38,9 @@ const AddClass = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200">
+            <Helmet>
+                <title>Music School | Add Class</title>
+            </Helmet>
             <div className="hero-content w-full  ">
 
                 <div className="card  w-full  pb-5 mt-5 shadow-2xl bg-base-100">

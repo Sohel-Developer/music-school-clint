@@ -6,6 +6,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { AuthContext } from '../Provider/AuthProvider';
 import { toast } from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
 
@@ -39,6 +40,9 @@ const Login = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Music School | Login</title>
+            </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content w-full  ">
 

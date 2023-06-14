@@ -2,6 +2,7 @@ import React from 'react';
 import ClassesRow from './ClassesRow';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet';
 
 const ManagesClasses = () => {
 
@@ -32,6 +33,9 @@ const ManagesClasses = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Music School | Manage User</title>
+            </Helmet>
             <h3 className="mt-6 text-xl">All Classes {classes?.length}</h3>
             <div className="flex flex-col mt-6">
                 <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
