@@ -26,7 +26,7 @@ const AddClass = () => {
             instructorEmail: user?.email
         }
 
-        axios.post('http://localhost:5000/class', classSave)
+        axios.post('https://music-school-server-red.vercel.app/class', classSave)
             .then(data => {
                 toast.success(`Successfully Classes Added!`)
             })

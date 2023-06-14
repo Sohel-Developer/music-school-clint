@@ -44,7 +44,7 @@ const AllClass = () => {
         }
 
 
-        axios.post('http://localhost:5000/class/selected', savedData)
+        axios.post('https://music-school-server-red.vercel.app/class/selected', savedData)
             .then(data => {
                 toast.success(`Successfully Classes Added!`)
             })

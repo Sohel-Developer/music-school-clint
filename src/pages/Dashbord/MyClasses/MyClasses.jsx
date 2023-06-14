@@ -12,7 +12,7 @@ const MyClasses = () => {
     const { isLoading, error, data: classes, refetch } = useQuery({
         queryKey: ['classes', user.email],
         // queryFn: () =>
-        //     fetch(`http://localhost:5000/classes/${user?.email}`).then(
+        //     fetch(`https://music-school-server-red.vercel.app/classes/${user?.email}`).then(
         //         (res) => res.json(),
         //     ),
 

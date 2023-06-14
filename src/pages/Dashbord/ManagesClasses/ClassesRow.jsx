@@ -18,7 +18,7 @@ const ClassesRow = ({ classItem, refetch }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/class/${id}`, {
+                    fetch(`https://music-school-server-red.vercel.app/class/${id}`, {
                         method: 'PATCH'
                     })
                         .then(res => res.json())

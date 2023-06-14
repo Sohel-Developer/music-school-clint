@@ -27,7 +27,7 @@ const AllUsers = () => {
 
 
     const handleMakeAdmin = user => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://music-school-server-red.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -42,7 +42,7 @@ const AllUsers = () => {
     }
 
     const handleMakeInstructor = user => {
-        fetch(`http://localhost:5000/instructor/${user._id}`, {
+        fetch(`https://music-school-server-red.vercel.app/instructor/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -69,7 +69,7 @@ const AllUsers = () => {
             .then((willDelete) => {
                 if (willDelete) {
 
-                    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+                    fetch(`https://music-school-server-red.vercel.app/users/admin/${user._id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())

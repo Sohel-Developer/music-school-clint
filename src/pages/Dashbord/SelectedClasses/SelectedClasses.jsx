@@ -25,7 +25,7 @@ const SelectedClasses = () => {
             .then((willDelete) => {
                 if (willDelete) {
 
-                    fetch(`http://localhost:5000/class/delete/${item._id}`, {
+                    fetch(`https://music-school-server-red.vercel.app/class/delete/${item._id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
