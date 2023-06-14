@@ -38,6 +38,11 @@ const PopularClasses = () => {
 
     return (
         <div className='max-w-7xl mx-auto my-12'>
+            <div className='text-center'>
+                <h4 className='text-2xl font-semibold'>Our Classes</h4>
+                <h2 className='text-5xl font-bold'>Most Popular Classes</h2>
+                <p className='my-4 md:w-1/2 mx-auto'>Pellentesque mattis mauris ac tortor volutpat, eu fermentum sapien euismod. In id tempus metus. Donec eu volutpat nibh, in maximus ligula.</p>
+            </div>
             <Swiper
                 slidesPerView={3}
                 spaceBetween={30}
@@ -50,7 +55,7 @@ const PopularClasses = () => {
 
 
                 {
-                    classes.map(item => <SwiperSlide key={item._id} className='grid md:grid-cols-2 lg:grid-cols-3'><div key={item._id} className="card my-12  bg-base-200 shadow-xl">
+                    classes.map(item => <SwiperSlide key={item._id} ><div key={item._id} className="card my-12  bg-base-200 shadow-xl">
                         <figure><img className='object-fill w-full ' src={item.image} alt="Shoes" /></figure>
                         <div className="card-body pb-5">
                             <h2 className="card-title">
