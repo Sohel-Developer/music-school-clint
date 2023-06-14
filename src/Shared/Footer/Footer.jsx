@@ -16,7 +16,7 @@ const Footer = () => {
                 <div className='mb-12'>
                     <div className="flex items-center">
                         <div>
-                            <img className='w-40' src={logo} alt="Logo" />
+                            <img className='w-40' src='https://i.ibb.co/BNZ2Dzj/musci-school.png' alt="Logo" />
                         </div>
                         <div className='  space-y-3'>
                             <h3 className='text-2xl mb-2 text-left font-bold'>Contuct Us</h3>

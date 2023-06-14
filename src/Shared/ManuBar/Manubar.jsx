@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import logo from '../../Images/musci-school.png'
 import { AuthContext } from '../../pages/Provider/AuthProvider';
 import { toast } from 'react-hot-toast';
 import useSelectedClass from '../../pages/Hooks/useSelectedClass';
@@ -89,7 +87,7 @@ const Manubar = () => {
 
                         </ul>
                     </div>
-                    <Link to="/"><img className='w-16' src={logo} /></Link>
+                    <Link to="/"><img className='w-16' src='https://i.ibb.co/BNZ2Dzj/musci-school.png' /></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 space-x-4">

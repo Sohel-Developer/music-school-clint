@@ -1,31 +1,31 @@
-## Music_School
+## Music_School [MusicSchoolLive](https://music-school-9e40b.web.app/)
 
 LiveLink: 
 
 ### Features
 -Admin Login-
 - admin manages class -
-_ admin make admin _
-_ admin make Instructor _
-_ admin can deleted user _
+- admin make admin _
+- admin make Instructor _
+- admin can deleted user _
 
 __ Instructor __
-_ Instructor my class  _
+- Instructor my class  _
 
 __ Student __
-_ Add Class For Learning _
-_ selected Class For Learning _
-_ delete selected class _
-_ Pay selected class _
+- Add Class For Learning _
+- selected Class For Learning _
+- delete selected class _
+- Pay selected class _
 
 ### Package Install
 
-_ React Hook From _ 
-_ React Sweet Alert _ 
-_ React Hot tost _ 
-_ React Router _ 
-_ Firebase _ 
-_ REact Icons _ 
-_ Axios _ 
-_ Tailwind Css_
-_ Tailwind Css Daysi UI_
+- React Hook From _ 
+- React Sweet Alert _ 
+- React Hot tost _ 
+- React Router _ 
+- Firebase _ 
+- REact Icons _ 
+- Axios _ 
+- Tailwind Css_
+- Tailwind Css Daysi UI_
