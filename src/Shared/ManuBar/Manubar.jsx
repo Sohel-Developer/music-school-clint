@@ -41,6 +41,8 @@ const Manubar = () => {
         localStorage.setItem("theme", theme);
         const localTheme = localStorage.getItem("theme");
         document.querySelector("html").setAttribute("data-theme", localTheme)
+        document.querySelector("#menubar").setAttribute("data-theme", localTheme)
+        document.querySelector("#footer").setAttribute("data-theme", localTheme)
         document.querySelector("html").setAttribute("class", localTheme)
     }, [theme])
 
@@ -75,7 +77,7 @@ const Manubar = () => {
 
 
     return (
-        <div className='bg-gray-100 z-10 dark:bg-slate-100 fixed w-full'>
+        <div id='menubar' className=' z-10 fixed w-full'>
             <div className="navbar max-w-7xl mx-auto ">
                 <div className="navbar-start">
                     <div className="dropdown">
