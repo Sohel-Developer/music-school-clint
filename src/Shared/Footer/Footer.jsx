@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaMapMarkerAlt, FaPhoneAlt, FaRegEnvelope } from 'react-icons/fa';
-import logo from '../../Images/musci-school.png'
 import { Link } from 'react-router-dom';
 
 const Footer = () => {

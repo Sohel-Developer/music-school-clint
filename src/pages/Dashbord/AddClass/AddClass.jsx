@@ -9,7 +9,7 @@ const AddClass = () => {
 
     const { user } = useAuth()
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const handleAddClass = (data) => {
         const { image, name, price, seats, description } = data;
@@ -28,6 +28,7 @@ const AddClass = () => {
 
         axios.post('https://music-school-server-red.vercel.app/class', classSave)
             .then(data => {
+                reset()
                 toast.success(`Successfully Classes Added!`)
             })
 

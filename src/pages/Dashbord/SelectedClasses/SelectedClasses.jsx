@@ -11,9 +11,8 @@ const SelectedClasses = () => {
     if (isLoading) return 'Loading...'
 
 
-    const handelDeleteClass = (item) => {
 
-        console.log(item);
+    const handelDeleteClass = (item) => {
 
         swal({
             title: "Are you sure?",

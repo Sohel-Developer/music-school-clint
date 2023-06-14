@@ -32,6 +32,31 @@ const MyClasses = () => {
     return (
         <div>
             My Classes {classes.length}
+            <div className='grid md:grid-cols-2 '>
+
+                {
+                    classes.map(item => <div key={item._id} className="card w-96 mt-12 bg-base-100 shadow-xl">
+                        <figure><img src={item.image} alt="Shoes" /></figure>
+                        <div className="card-body">
+                            <h2 className="card-title">
+                                {item?.name} Class
+                                <div className="badge badge-secondary">$ {item?.price}</div>
+                            </h2>
+                            <p>{item?.description}</p>
+                            <div className="card-actions">
+                                <div className="">Instructor Name : {item.instructorName}</div>
+                                <div className="">Instructor Email : {item?.instructorEmail}
+                                </div>
+                            </div>
+                            <div className="card-actions ">
+                                <div className="badge badge-outline">Seats-{item.seats}</div>
+                                <div className="badge badge-outline">Student Enroled {item?.student || 0}</div>
+                            </div>
+                        </div>
+                    </div>)
+                }
+
+            </div>
 
         </div>
     );

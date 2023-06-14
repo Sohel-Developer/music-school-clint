@@ -8,7 +8,7 @@ const useInstructor = () => {
     const { user, loading } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     // use axios secure with react query
-    const { data: isInstructor, isLoading: isInstructorLoading } = useQuery({
+    const { data: isInstructor, isLoading: isInstructorLoading, refetch } = useQuery({
         queryKey: ['isInstructor', user?.email],
         enabled: !loading,
         queryFn: async () => {
@@ -17,7 +17,8 @@ const useInstructor = () => {
         }
 
     })
-    return [isInstructor, isInstructorLoading]
+    refetch()
+    return [isInstructor, isInstructorLoading, refetch]
 
 };
 
